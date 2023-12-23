@@ -1,17 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from "react";
+import { render } from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import Xaarow from './components/Xarrow';
+// import Reactflow from "./components/Reactflow/Reactflow";
+import Reactflow from "./components/Reactflow/Reactflow";
+import ReactFlowDND from './components/ReactFlowDnd';
+import NodeFlow from "./components/NodeFlow";
+import Xarrow, { useXarrow, xarrowPropsType, Xwrapper } from "react-xarrows";
+import NewApp from "./App";
+import Component1 from "./components/Sidebar";
+import Button from './Component1/Button/Button';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+function App() {
+  const updateXarrow = useXarrow();
+  const [state, setState] = useState("CLICK ME");
+
+  return (
+    <div style={{display:'flex', justifyContent:'space-between'}}>
+        {/* <NewApp /> */}
+        {/* <ReactReandererFlow/> */}
+        {/* <Xaarow updateXarrow={updateXarrow}/> */}
+        <Reactflow/>
+        {/* <ReactFlowDND/> */}
+        {/* <NodeFlow/> */}
+        {/* <Component1/> */}
+        {/* <Button label="Click me please"/> */}
+    </div>
+  );
+}
+
+render(
+  <Router>
     <App />
-  </React.StrictMode>
+  </Router>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
